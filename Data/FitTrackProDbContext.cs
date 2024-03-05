@@ -9,6 +9,11 @@ public class FitTrackProDbContext : IdentityDbContext<IdentityUser>
 {
     private readonly IConfiguration _configuration;
     public DbSet<UserProfile> UserProfiles { get; set; }
+    public DbSet<Workout> Workouts { get; set; }
+    public DbSet<UserWorkout> UserWorkouts { get; set; }
+    public DbSet<Plan> Plans { get; set; }
+    public DbSet<WorkoutType> WorkoutTypes { get; set; }
+    public DbSet<DayPlan> DayPlans { get; set; }
 
 
     public FitTrackProDbContext(DbContextOptions<FitTrackProDbContext> context, IConfiguration config) : base(context)
@@ -18,7 +23,6 @@ public class FitTrackProDbContext : IdentityDbContext<IdentityUser>
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        base.OnModelCreating(modelBuilder);
 
         modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
         {
@@ -48,6 +52,41 @@ public class FitTrackProDbContext : IdentityDbContext<IdentityUser>
             LastName = "Dorado",
             Email = "admina@strator.comx",
             Address = "444 Main Street",
+        });
+        modelBuilder.Entity<Workout>().HasData(new Workout []
+        {
+            new Workout {Id = 1, Name = "Bicep Curls", WorkoutTypeId = 1, PlanId = null},
+            new Workout {Id = 2, Name = "Hammer Curls", WorkoutTypeId = 1, PlanId = null},
+            new Workout {Id = 3, Name = "Dead Lifts", WorkoutTypeId = 2, PlanId = null},
+            new Workout {Id = 4, Name = "Sumo Squats", WorkoutTypeId = 2, PlanId = null},
+            new Workout {Id = 5, Name = "Burpees", WorkoutTypeId = 3, PlanId = null},
+            new Workout {Id = 6, Name = "Bicycle Crunches", WorkoutTypeId = 4, PlanId = null},
+            new Workout {Id = 7, Name = "Plank", WorkoutTypeId = 4, PlanId = null},
+            new Workout {Id = 8, Name = "Jumping Jacks", WorkoutTypeId = 3, PlanId = null}
+        });
+         modelBuilder.Entity<UserWorkout>().HasData(new UserWorkout []
+        {
+            new UserWorkout {Id = 1, UserProfileId = 1, WorkoutId = 1},
+            new UserWorkout {Id = 2, UserProfileId = 1, WorkoutId = 2},
+            new UserWorkout {Id = 3, UserProfileId = 1, WorkoutId = 7},
+            new UserWorkout {Id = 4, UserProfileId = 1, WorkoutId = 1}
+        });
+         modelBuilder.Entity<Plan>().HasData(new Plan []
+        {
+            new Plan {Id = 1, UserProfileId = 1, WorkoutTypeId = 1},
+            new Plan {Id = 2, UserProfileId = 1, WorkoutTypeId = 3},
+        });
+          modelBuilder.Entity<WorkoutType>().HasData(new WorkoutType []
+        {
+            new WorkoutType {Id = 1, Name = "Upper Body", WorkoutId = 1},
+            new WorkoutType {Id = 2, Name = "Lower Body", WorkoutId = 1},
+            new WorkoutType {Id = 3, Name = "Cardio", WorkoutId = 1},
+            new WorkoutType {Id = 4, Name = "Abdominal", WorkoutId = null}
+        });
+         modelBuilder.Entity<DayPlan>().HasData(new DayPlan []
+        {
+            new DayPlan {Id = 1, PlanId = 1, DayOfWeek = DayOfWeek.Monday, WorkoutId = 1},
+            new DayPlan {Id = 2, PlanId = 1, DayOfWeek = DayOfWeek.Monday, WorkoutId = 2}
         });
     }
 }

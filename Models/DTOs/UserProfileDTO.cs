@@ -23,4 +23,6 @@ public class UserProfileDTO
     public string? IdentityUserId { get; set; }
 
     public IdentityUser IdentityUser { get; set; }
+    public List<UserWorkoutDTO> UserWorkouts { get; set; }
+    public List<WorkoutDTO> Workouts { get; set; }
 }
