@@ -81,7 +81,8 @@ public class FitTrackProDbContext : IdentityDbContext<IdentityUser>
             new WorkoutType {Id = 1, Name = "Upper Body", WorkoutId = 1},
             new WorkoutType {Id = 2, Name = "Lower Body", WorkoutId = 1},
             new WorkoutType {Id = 3, Name = "Cardio", WorkoutId = 1},
-            new WorkoutType {Id = 4, Name = "Abdominal", WorkoutId = null}
+            new WorkoutType {Id = 4, Name = "Abdominal", WorkoutId = null},
+            new WorkoutType {Id = 5, Name = "Full-Body", WorkoutId = null}
         });
          modelBuilder.Entity<DayPlan>().HasData(new DayPlan []
         {
