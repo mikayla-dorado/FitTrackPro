@@ -11,3 +11,5 @@ public class WorkoutType
     [ForeignKey("WorkoutId")]
     public Workout? Workout { get; set; }
 }
+
+//still getting an error in this class and the workout class, not sure why.
