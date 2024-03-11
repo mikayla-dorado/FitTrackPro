@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using FitTrackPro.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Components.Routing;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
 
 namespace FitTrackPro.Data;
 public class FitTrackProDbContext : IdentityDbContext<IdentityUser>
@@ -14,6 +15,7 @@ public class FitTrackProDbContext : IdentityDbContext<IdentityUser>
     public DbSet<Plan> Plans { get; set; }
     public DbSet<WorkoutType> WorkoutTypes { get; set; }
     public DbSet<DayPlan> DayPlans { get; set; }
+    public DbSet<Day> Days{ get; set; }
 
 
     public FitTrackProDbContext(DbContextOptions<FitTrackProDbContext> context, IConfiguration config) : base(context)
@@ -86,8 +88,25 @@ public class FitTrackProDbContext : IdentityDbContext<IdentityUser>
         });
          modelBuilder.Entity<DayPlan>().HasData(new DayPlan []
         {
-            new DayPlan {Id = 1, PlanId = 1, DayOfWeek = DayOfWeek.Monday, WorkoutId = 1},
-            new DayPlan {Id = 2, PlanId = 1, DayOfWeek = DayOfWeek.Monday, WorkoutId = 2}
+            new DayPlan {Id = 1, PlanId = 1, DayId = 2, WorkoutId = 1},
+            new DayPlan {Id = 2, PlanId = 1, DayId = 2, WorkoutId = 2}
+        });
+         modelBuilder.Entity<Day>().HasData(new Day []
+        {
+            new Day {Id = 1, Name = "Sunday"},
+            new Day {Id = 2,  Name = "Monday"},
+            new Day {Id = 3,  Name = "Tuesday"},
+            new Day {Id = 4,  Name = "Wednesday"},
+            new Day {Id = 5,  Name = "Thursday"},
+            new Day {Id = 6,  Name = "Friday"},
+            new Day {Id = 7,  Name = "Saturday"}
         });
     }
 }
+
+//added "Day" to my DB, but still have errors in the console
+//this is the errror when trying to run the migrations:
+
+// The entity type 'IdentityUserLogin<string>' requires a primary key to be defined. 
+// If you intended to use a keyless entity type, call 'HasNoKey' in 'OnModelCreating'. 
+// For more information on keyless entity types, see https://go.microsoft.com/fwlink/?linkid=2141943.
