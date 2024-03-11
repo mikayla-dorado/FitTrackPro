@@ -11,6 +11,8 @@ using FitTrackPro.Data;
 
 namespace FitTrackPro.Controllers;
 
+//having issues loggin in for some reason? can't log in and can't register a new user??
+
 
 [ApiController]
 [Route("api/[controller]")]
