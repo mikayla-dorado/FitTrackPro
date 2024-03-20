@@ -105,8 +105,10 @@ public class FitTrackProDbContext : IdentityDbContext<IdentityUser>
 }
 
 //added "Day" to my DB, but still have errors in the console
-//this is the errror when trying to run the migrations:
+//this is the error when trying to run the migrations:
 
 // The entity type 'IdentityUserLogin<string>' requires a primary key to be defined. 
 // If you intended to use a keyless entity type, call 'HasNoKey' in 'OnModelCreating'. 
 // For more information on keyless entity types, see https://go.microsoft.com/fwlink/?linkid=2141943.
+
+//can't figure out the errors still, no migrations
