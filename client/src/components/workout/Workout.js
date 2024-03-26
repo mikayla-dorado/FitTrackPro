@@ -4,6 +4,7 @@ import { useState } from "react"
 export const Workout = () => {
     const [name, setName] = useState({})
     const [workoutType, setWorkoutType] = useState({})
+    const [plan, setPlan] = useState("")
 }
 //this will display a list of workouts available in flexbox style
     //each workout will include an image, the name of the workout and the type (upper body, lower, etc)
