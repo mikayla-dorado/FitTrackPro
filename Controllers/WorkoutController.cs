@@ -25,6 +25,20 @@ public class WorkoutController : ControllerBase
     // [Authorize]
     // public IActionResult Get()
     // {
-
+    //     var workout = _dbContext
+    //     .Workouts
+    //     .Include(w => w.WorkoutType)
+    //     .Include(w => w.Plan)
+    //     .Select(w => new WorkoutDTO
+    //     {
+    //         Id = w.Id,
+    //         Name = w.Name,
+    //         WorkoutTypes = w.WorkoutType.Select(wt => new WorkoutTypeDTO
+    //         {
+    //             Id = wt.Id,
+    //             Name = wt.Name
+    //         })
+    //     })
     // }
+    //! not done, may not be correct format
 }
