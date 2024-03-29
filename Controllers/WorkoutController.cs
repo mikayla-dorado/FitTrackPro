@@ -37,8 +37,8 @@ public class WorkoutController : ControllerBase
     //         {
     //             Id = wt.Id,
     //             Name = wt.Name
-    //         })
-    //     })
+    //         }) //! workout type also has a workoutId, how would this be reprentsented here?
+    //     }) //! need to expand on 'Plan'
     // }
     //! not done, may not be correct format
 }
